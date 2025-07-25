@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eco Pet - Virtual Animal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f9f4;
+      padding: 30px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #2d572c;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .pet-container {
+      margin-top: 40px;
+    }
+
+    .pet-img {
+      width: 150px;
+      height: 150px;
+      margin: 10px auto;
+    }
+
+    .actions button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #27ae60;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .actions button:hover {
+      background-color: #219150;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .emotion {
+      font-size: 50px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div>
+      <a href="homepage.html">🏠 Home</a>
+      <a href="adoption.html">🐾 Adopt</a>
+      <a href="profile.html">👤 Profile</a>
+    </div>
+  </nav>
+
+  <h1>🐶 Care for Your Adopted Wild Dog</h1>
+
+  <div class="pet-container">
+    <div id="emotion" class="emotion">😊</div>
+    <img src="images/wilddog-happy.png" alt="Virtual Wild Dog" class="pet-img" id="petImage">
+    <div class="actions">
+      <button onclick="feedPet()">🍖 Feed</button>
+      <button onclick="cleanPet()">🧼 Clean</button>
+      <button onclick="educateUser()">📚 Learn</button>
+    </div>
+    <div class="message" id="petMessage">Hello! I’m your adopted wild dog! Let's make the world greener together.</div>
+  </div>
+
+  <script>
+    const messages = [
+      "Poaching has sadly made many of us endangered... 😢",
+      "I thrive in protected areas like Hwange and Gonarezhou! 🏞️",
+      "Habitat loss is making it harder to find food. Help spread awareness! 🌍",
+      "Thank you for taking care of me! 🐕💚"
+    ];
+
+    function feedPet() {
+      document.getElementById("petMessage").textContent = "Yum! Thank you for the food! 🦴";
+      document.getElementById("emotion").textContent = "😋";
+      document.getElementById("petImage").src = "images/happy-dog.jpg";
+    }
+
+    function cleanPet() {
+      document.getElementById("petMessage").textContent = "I'm feeling fresh and clean! ✨";
+      document.getElementById("emotion").textContent = "😄";
+      document.getElementById("petImage").src = "images/clean-dog.jpg";
+    }
+
+    function educateUser() {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      document.getElementById("petMessage").textContent = messages[randomIndex];
+      document.getElementById("emotion").textContent = "🧠";
+      document.getElementById("petImage");
+    }
+  </script>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

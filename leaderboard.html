@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eco Leaderboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0fdf4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .leaderboard {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2d572c;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #c8e6c9;
+      text-align: center;
+    }
+
+    thead tr {
+      background-color: #d0f0dc;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fdfb;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background-color: #27ae60;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    #impact-summary {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <section class="leaderboard">
+    <h2>🌿 Eco-Leaderboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Title</th>
+          <th>EcoPoints</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Tino</td>
+          <td>Dog Warrior</td>
+          <td>1500</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Sean</td>
+          <td>Rhino Defender</td>
+          <td>1300</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Cherry</td>
+          <td>Elephant Ally</td>
+          <td>1200</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Chipo</td>
+          <td>Quiz Master</td>
+          <td>1100</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p id="impact-summary">
+      These heroes are making a real difference for wildlife in Zimbabwe!
+    </p>
+
+    <div style="text-align: center;">
+      <a href="homepage.html" class="btn">⬅ Back to HomePage</a>
+    </div>
+  </section>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

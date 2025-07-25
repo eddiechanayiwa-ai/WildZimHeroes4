@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Black Rhino Quiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f9f4;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      color: #2c3e50;
+    }
+
+    h1 {
+      color: #2d572c;
+    }
+
+    .question {
+      background-color: #ffffff;
+      border: 2px solid #c8e6c9;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      display: block;
+      margin: 8px 0;
+    }
+
+    button {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .badge-earned {
+      margin-top: 30px;
+      background-color: #e0ffe6;
+      border: 2px dashed #4caf50;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      display: none;
+    }
+
+    .badge-earned img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    /* Popup modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .close {
+      color: #888;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    #retry-btn {
+      display: none;
+      background-color: #f39c12;
+    }
+
+    #retry-btn:hover {
+      background-color: #d98206;
+    }
+  </style>
+</head>
+<style>
+    .navbar {
+  background-color: #e8f5e9;
+  padding: 15px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.navbar__menu {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+.navbar__links {
+  color: #2d572c;
+  font-weight: bold;
+  padding: 10px 15px;
+  display: inline-block;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.navbar__links:hover {
+  color: #fff;
+  background-color: #27ae60;
+}
+
+
+
+    </style
+<body>
+     <nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <h1>🦏 Black Rhino Quiz</h1>
+
+  <div class="question" id="q1">
+    <h3>Q1: What is the biggest threat to black rhinos?</h3>
+    <label class="option"><input type="radio" name="q1" value="a"> Habitat loss</label>
+    <label class="option"><input type="radio" name="q1" value="b"> Poaching</label>
+    <label class="option"><input type="radio" name="q1" value="c"> Climate change</label>
+  </div>
+
+  <div class="question" id="q2">
+    <h3>Q2: What do black rhinos mainly eat?</h3>
+    <label class="option"><input type="radio" name="q2" value="a"> Grass</label>
+    <label class="option"><input type="radio" name="q2" value="b"> Meat</label>
+    <label class="option"><input type="radio" name="q2" value="c"> Leaves and twigs</label>
+  </div>
+
+  <div class="question" id="q3">
+    <h3>Q3: How many black rhinos are left in the wild (approx)?</h3>
+    <label class="option"><input type="radio" name="q3" value="a"> 5,000</label>
+    <label class="option"><input type="radio" name="q3" value="b"> 20,000</label>
+    <label class="option"><input type="radio" name="q3" value="c"> 50,000</label>
+  </div>
+
+  <button onclick="checkAnswers()">Submit Answers</button>
+  <button id="retry-btn" onclick="resetQuiz()">🔁 Try Again</button>
+
+  <div class="result" id="quiz-result"></div>
+
+  <div class="badge-earned" id="rhino-badge">
+    <img src="images/Rhino-defender.jpg" alt="Rhino Defender Badge">
+    <p>🎉 You've earned the <strong>Rhino Defender</strong> badge!</p>
+    <button onclick="goBack()">Back to HomePage</button>
+  </div>
+
+  <!-- Thank You Popup -->
+  <div class="modal" id="thankYouModal">
+    <div class="modal-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>🙌 Thank You!</h2>
+      <p>You’ve taken action to help protect black rhinos.</p>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswers() {
+      const correct = {
+        q1: "b",
+        q2: "c",
+        q3: "a"
+      };
+
+      let score = 0;
+      let total = 3;
+
+      for (let q in correct) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (selected && selected.value === correct[q]) {
+          score++;
+        }
+      }
+
+      const result = document.getElementById("quiz-result");
+      const badgeBox = document.getElementById("rhino-badge");
+      const retryBtn = document.getElementById("retry-btn");
+
+      if (score === total) {
+        result.textContent = `✅ Perfect score! ${score}/${total}`;
+        badgeBox.style.display = "block";
+        localStorage.setItem("rhinoDefenderBadge", "earned");
+        openPopup();
+      } else {
+        result.textContent = `You got ${score}/${total}. Try again to earn the badge.`;
+        retryBtn.style.display = "inline-block";
+      }
+    }
+
+    function resetQuiz() {
+      const inputs = document.querySelectorAll("input[type=radio]");
+      inputs.forEach(i => i.checked = false);
+      document.getElementById("quiz-result").textContent = "";
+      document.getElementById("retry-btn").style.display = "none";
+    }
+
+    function goBack() {
+      window.location.href = "homepage.html";
+    }
+
+    // Badge viewer (if already earned)
+    window.onload = function () {
+      if (localStorage.getItem("rhinoDefenderBadge") === "earned") {
+        document.getElementById("rhino-badge").style.display = "block";
+      }
+    };
+
+    // Popup logic
+    function openPopup() {
+      document.getElementById("thankYouModal").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("thankYouModal").style.display = "none";
+    }
+  </script>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

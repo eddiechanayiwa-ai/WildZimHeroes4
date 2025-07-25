@@ -1,0 +1,226 @@
+<!-- learn-wildlife.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn About Wildlife | ZimHeroes</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f9f4;
+      color: #2c3e50;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #2d572c;
+      text-align: center;
+    }
+
+    .lesson-card {
+      background-color: #fff;
+      border: 2px solid #c8e6c9;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .lesson-title {
+      font-size: 1.4rem;
+      color: #1e4620;
+      margin-bottom: 10px;
+    }
+
+    .lesson-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .lesson-content {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background-color: #27ae60;
+      color: #fff;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #219150;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <h1>📚 Wildlife Learning Hub</h1>
+
+  <div class="lesson-card">
+    <div class="lesson-title">🦏 Black Rhinos – Guardians of the Savannah</div>
+    <img src="images/black-rhino.jpg" alt="Black Rhino" class="lesson-img">
+    <div class="lesson-content">
+      Black rhinos are critically endangered due to poaching and habitat loss. They are browsers, meaning they eat bushes and shrubs. Did you know they can live up to 40 years?
+    </div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-title">🐘 African Elephants – The Gentle Giants</div>
+    <img src="images/elephant.jpg" alt="Elephant" class="lesson-img">
+    <div class="lesson-content">
+      African elephants are the largest land animals on Earth. They're key to maintaining the savanna ecosystem by spreading seeds and creating water holes used by other animals.
+    </div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-title">🐕 African Wild Dogs – The Painted Hunters</div>
+    <img src="images/african-wildDog.jpg" alt="African Wild Dog" class="lesson-img">
+    <div class="lesson-content">
+      These dogs live in highly social packs and are among Africa’s most effective hunters. Sadly, they’re endangered due to habitat fragmentation and human-wildlife conflict.
+    </div>
+  </div>
+  <div class="lesson-card">
+  <div class="lesson-title">🧠 Did You Know? – Wildlife Fact Generator</div>
+  <p id="fact-display" class="lesson-content">Click the button to reveal a random wildlife fact!</p>
+  <button onclick="showFact()" class="back-btn">🎲 Show Fact</button>
+</div>
+
+<div class="lesson-card">
+  <div class="lesson-title">💰 Learn & Earn</div>
+  <p class="lesson-content">
+    Every time you explore a lesson or read a fact, you earn <strong>EcoPoints</strong>! Collect points to level up your rank and unlock badges.
+  </p>
+  <p class="lesson-content">Current EcoPoints: <span id="eco-points">0</span></p>
+  <button onclick="earnPoints()" class="back-btn">➕ Earn Points</button>
+</div>
+
+
+  <a href="homepage.html" class="back-btn">⬅ Back to HomePage</a>
+  <script>
+  const facts = [
+    "African wild dogs have a success rate of over 80% when hunting—higher than lions!",
+    "Elephants can 'hear' with their feet by picking up ground vibrations.",
+    "Black rhinos use their hooked upper lip to grab twigs and leaves.",
+    "Elephants mourn their dead and show empathy to other species.",
+    "Rhinos have poor eyesight, but a great sense of smell and hearing.",
+    "Wild dogs communicate through high-pitched twittering sounds.",
+    "Baby elephants suck their trunks like babies suck thumbs."
+  ];
+
+  function showFact() {
+    const randomIndex = Math.floor(Math.random() * facts.length);
+    document.getElementById('fact-display').textContent = facts[randomIndex];
+  }
+
+  let ecoPoints = parseInt(localStorage.getItem('ecoPoints')) || 0;
+
+  function updatePointsDisplay() {
+    document.getElementById('eco-points').textContent = ecoPoints;
+  }
+
+  function earnPoints() {
+    ecoPoints += 5; // Earn 5 points per interaction
+    localStorage.setItem('ecoPoints', ecoPoints);
+    updatePointsDisplay();
+    alert("✅ You earned 5 EcoPoints!");
+  }
+
+  // Initialize on load
+  window.onload = updatePointsDisplay;
+</script>
+<div id="fact-popup" class="fact-popup">
+  <h3>🌿 Did You Know?</h3>
+  <p id="fact-text"></p>
+  <button onclick="closePopup()">Got it!</button>
+</div>
+
+<script>
+  const animalFacts = [
+    // 🐘 Elephant facts
+    "Elephants are the largest land animals on Earth. 🐘",
+    "An elephant’s trunk has over 40,000 muscles! 💪",
+    "Elephants are highly social and mourn their dead. 😢",
+
+    // 🦏 Rhino facts
+    "Rhino horns are made of keratin — the same material as our hair and nails. 🦏",
+    "Some rhino species can run up to 40 km/h. 🏃‍♂️💨",
+    "There are fewer than 30,000 rhinos left in the wild. ⚠️",
+
+    // 🐕 Wild dog facts
+    "African wild dogs live in packs of 6–20 and are highly cooperative. 🐕",
+    "Wild dogs have an 80% hunting success rate — higher than lions! 🎯",
+    "They are endangered due to habitat loss and human conflict. 🛑"
+  ];
+
+  function showFact() {
+    const randomFact = animalFacts[Math.floor(Math.random() * animalFacts.length)];
+    document.getElementById("fact-text").textContent = randomFact;
+    document.getElementById("fact-popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("fact-popup").style.display = "none";
+  }
+
+  window.addEventListener("DOMContentLoaded", showFact);
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+
+</body>
+</html>

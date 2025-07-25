@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adopt an Animal | Wild Zim Heroes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+  
+      <!-- Responsive Eco Navbar -->
+<nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <header class="hero small">
+    <h1>🐾 Adopt Your Wildlife Hero</h1>
+    <p>Choose an animal and start your conservation mission!</p>
+  </header>
+
+<section class="animal-cards">
+    <!-- Wild Dog -->
+    <div class="animal-card">
+      <img src="images/african-wildDog.jpg" alt="African Wild Dog">
+      <h3>African Wild Dog</h3>
+      <p>Help protect one of Africa's most endangered predators.</p>
+      <div class="btn-group">
+  <a href="african-wild dog.html" class="btn">Adopt Me</a>
+  <a href="virtualpet-game.html" class="btn secondary-btn">Protect Me</a>
+</div>
+
+    </div>
+
+    <!-- Elephant -->
+    <div class="animal-card">
+      <img src="images/Elephant.jpg" alt="African Elephant">
+      <h3>African Elephant</h3>
+      <p>Support the conservation of these gentle giants.</p>
+      <div class="btn-group">
+  <a href="elephant.html" class="btn">Adopt Me</a>
+  <a href="virtualpet-game2.html" class="btn secondary-btn">Protect Me</a>
+</div>
+
+    </div>
+
+    <!-- Black Rhino -->
+    <div class="animal-card">
+      <img src="images/black-rhino.jpg" alt="Black Rhino">
+      <h3>Black Rhino</h3>
+      <p>Stand up against poaching and protect the black rhino.</p>
+      <div class="btn-group">
+  <a href="black-Rhino.html" class="btn">Adopt Me</a>
+  <a href="virtualpet-game3.html" class="btn secondary-btn">Protect Me</a>
+</div>
+
+    </div>
+  </section>
+
+
+
+    </div>
+  </section>
+</body>
+<div id="fact-popup" class="fact-popup">
+  <h3>🌿 Did You Know?</h3>
+  <p id="fact-text"></p>
+  <button onclick="closePopup()">Got it!</button>
+</div>
+
+<script>
+  const animalFacts = [
+    // 🐘 Elephant facts
+    "Elephants are the largest land animals on Earth. 🐘",
+    "An elephant’s trunk has over 40,000 muscles! 💪",
+    "Elephants are highly social and mourn their dead. 😢",
+
+    // 🦏 Rhino facts
+    "Rhino horns are made of keratin — the same material as our hair and nails. 🦏",
+    "Some rhino species can run up to 40 km/h. 🏃‍♂️💨",
+    "There are fewer than 30,000 rhinos left in the wild. ⚠️",
+
+    // 🐕 Wild dog facts
+    "African wild dogs live in packs of 6–20 and are highly cooperative. 🐕",
+    "Wild dogs have an 80% hunting success rate — higher than lions! 🎯",
+    "They are endangered due to habitat loss and human conflict. 🛑"
+  ];
+
+  function showFact() {
+    const randomFact = animalFacts[Math.floor(Math.random() * animalFacts.length)];
+    document.getElementById("fact-text").textContent = randomFact;
+    document.getElementById("fact-popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("fact-popup").style.display = "none";
+  }
+
+  window.addEventListener("DOMContentLoaded", showFact);
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+
+</html>
+<script>
+  function adoptAnimal(name, imageUrl) {
+    localStorage.setItem("adoptedAnimal", name);
+    localStorage.setItem("animalImg", imageUrl);
+  }
+</script>
+

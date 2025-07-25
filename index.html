@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Wild-Zim Heroes</title>
+  <title>be the next zim wildlife hero</title>
+  
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <header class="hero">
+    <h1>🌍 Welcome to Wild-Zim Heroes</h1>
+    <p>Join us in protecting Zimbabwe's wildlife and ecosystems!</p>
+  
+  <!-- Main Content -->
+  <main class="main">
+    <div class="main__container">
+      <div class="main__content">
+        <h1>Guardian of the Natural Ecosystem</h1>
+        <h2>Adoption and Customization</h2>
+        <p>Customize your character into a defender of wildlife</p>
+      </div>
+      
+      <div class="main__img__container">
+        <img src="undraw_designer-avatar_n5q8.svg" alt="Avatar illustration" id="main__img" />
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <!-- Firebase SDK -->
+ <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+<div id="fact-popup" class="fact-popup">
+  <h3>🌿 Did You Know?</h3>
+  <p id="fact-text"></p>
+  <button onclick="closePopup()">Got it!</button>
+</div>
+
+<script>
+  const animalFacts = [
+    // 🐘 Elephant facts
+    "Elephants are the largest land animals on Earth. 🐘",
+    "An elephant’s trunk has over 40,000 muscles! 💪",
+    "Elephants are highly social and mourn their dead. 😢",
+
+    // 🦏 Rhino facts
+    "Rhino horns are made of keratin — the same material as our hair and nails. 🦏",
+    "Some rhino species can run up to 40 km/h. 🏃‍♂️💨",
+    "There are fewer than 30,000 rhinos left in the wild. ⚠️",
+
+    // 🐕 Wild dog facts
+    "African wild dogs live in packs of 6–20 and are highly cooperative. 🐕",
+    "Wild dogs have an 80% hunting success rate — higher than lions! 🎯",
+    "They are endangered due to habitat loss and human conflict. 🛑"
+  ];
+
+  function showFact() {
+    const randomFact = animalFacts[Math.floor(Math.random() * animalFacts.length)];
+    document.getElementById("fact-text").textContent = randomFact;
+    document.getElementById("fact-popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("fact-popup").style.display = "none";
+  }
+
+  window.addEventListener("DOMContentLoaded", showFact);
+</script>
+
+</body>
+</html>

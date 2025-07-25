@@ -1,0 +1,107 @@
+<div class="user-profile">
+    <img src="images/avatar.png" alt="User Avatar" class="user-avatar">
+
+  <h2>Tino</h2>
+  <p class="rank">🦁 Eco Rank: <strong>Rhino Warrior</strong></p>
+  <div class="profile-card">
+  <h2>👤 Your Profile</h2>
+  <p><strong>EcoPoints:</strong> <span id="user-points">0</span></p>
+  <p><strong>Rank:</strong> <span id="user-rank">🔰</span></p>
+</div>
+
+
+  <div class="profile-links">
+    <a href="adoption.html">🦁 My Adoptions</a>
+    <a href="rhino-quiz.html">🧠 Black-Rhino Quiz</a>
+    <a href="elephant-quiz.html">🧠 Elephant-Quiz</a>
+    <a href="quiz-wilddog.html">🧠 WildDog-Quiz</a>
+    <a href="leaderboard.html">🏆 Leaderboard</a>
+    <a href="homepage.html">HomePage</a>
+    <a href="logout.html">🚪 Logout</a>
+  </div>
+</div>
+<style>
+    .user-profile {
+  background-color: #ffffff;
+  border: 2px solid #c8e6c9;
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #4caf50;
+  margin-bottom: 10px;
+}
+
+.user-profile h2 {
+  margin: 0;
+  color: #2d572c;
+}
+
+.rank {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #388e3c;
+}
+
+.profile-links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-links a {
+  background-color: #e0f2f1;
+  color: #2d572c;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.profile-links a:hover {
+  background-color: #27ae60;
+  color: white;
+  border-color: #1b5e20;
+}
+
+</style>
+<script>
+  let points = parseInt(localStorage.getItem("ecoPoints")) || 0;
+
+  function getRank(points) {
+    if (points >= 100) return "🌍 Eco Legend";
+    if (points >= 60) return "🦏 Rhino Warrior";
+    if (points >= 30) return "🐘 Wildlife Tracker";
+    if (points >= 10) return "🌿 Eco Explorer";
+    return "🔰 New Hero";
+  }
+
+  document.getElementById("user-points").textContent = points;
+  document.getElementById("user-rank").textContent = getRank(points);
+  function getRank(points) {
+  if (points >= 100) return "🌍 Eco Legend";
+  if (points >= 60) return "🦏 Rhino Warrior";
+  if (points >= 30) return "🐘 Wildlife Tracker";
+  if (points >= 10) return "🌿 Eco Explorer";
+  return "🔰 New Hero";
+}
+
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+

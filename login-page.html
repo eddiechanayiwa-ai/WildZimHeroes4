@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZimHeroes Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+
+<script>
+  // Firebase Config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "1234567890",
+    appId: "APP_ID"
+  };
+
+  // Init Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  // Save user on sign up
+  function saveUserInfo(user, isSignUp = false) {
+    const userRef = db.collection("users").doc(user.uid);
+
+    if (isSignUp) {
+      userRef.set({
+        uid: user.uid,
+        email: user.email,
+        adoptedAnimal: "None",
+        signupTime: firebase.firestore.FieldValue.serverTimestamp(),
+        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } else {
+      userRef.update({
+        lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }
+  }
+
+  // On Login or Signup
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      saveUserInfo(user, true); // or false for login
+    }
+  });
+</script>
+
+
+  <main class="auth-container">
+    <div class="auth-card">
+      <h2>🌍 Welcome Back Hero</h2>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit" class="main__btn">Login</button>
+      </form>
+      <p>New here? <a href="sign-up.html">Sign up</a></p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const storedUser = JSON.parse(localStorage.getItem(email));
+
+      if (storedUser && storedUser.password === password) {
+        localStorage.setItem('loggedInUser', email);
+        alert("Welcome back, " + storedUser.name + "!");
+        window.location.href = "Adoption.html"; // your dashboard page
+      } else {
+        alert("Invalid login credentials.");
+      }
+    });
+  </script>
+  <script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

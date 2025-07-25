@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Task Dashboard | Wild Zim Heroes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <nav class="navbar">
+  <div class="navbar__container">
+    <div class="navbar__logo">🌍 WildZim-Heroes</div>
+    <button class="navbar__toggle" onclick="toggleMenu()">☰</button>
+    <ul class="navbar__menu" id="navbarMenu">
+      <li class="navbar__item">
+        <a href="homepage.html" class="navbar__links">🏠 Home</a>
+      </li>
+      <li class="navbar__item">
+        <a href="adoption.html" class="navbar__links">🐾 Adopt</a>
+      </li>
+      <li class="navbar__item">
+        <a href="profile.html" class="navbar__links">👤 Profile</a>
+      </li>
+      <li class="navbar__item">
+        <a href="leaderboard.html" class="navbar__links active">🏆 Leaderboard</a>
+      </li>
+      <li class="navbar__item">
+        <a href="login-page.html" class="navbar__links">🔐 Login</a>
+      </li>
+      <li class="navbar__item">
+            <a href="quiz-wilddog.html" class="navbar__links">
+              🐾</a>
+            <a href="rhino-quiz.html" class="navbar__links">
+              🦏</a>
+              <a href="elephant-quiz.html" class="navbar__links">
+              🐘</a>
+          🧠 Quiz</a>
+      </li>
+      <li class="navbar__item">
+  <a href="learn-wildlife.html" class="navbar__links">📚 Learn</a>
+</li>
+      <li class="navbar__item">
+        <a href="sign-up.html" class="navbar__links">📝 Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <header class="hero small">
+    <h1>🐘 Your Mission Dashboard</h1>
+    <p>Complete tasks to protect your adopted elephant!</p>
+  </header>
+
+  <section class="dashboard">
+    <div class="adopted-animal">
+      <h2>🐘 You adopted: <span id="animal-name">Elephant</span></h2>
+      <img id="Elephant" src="Elephant.jpg" alt="Adopted Elephant" />
+    </div>
+
+    <div class="tasks">
+      <h3>🌿 Conservation Tasks</h3>
+      <ul>
+        <li>♻️ Pledge to avoid single-use plastic for 3 days <button>Mark Done</button></li>
+        <li>📸 Share a photo of an elephant or its habitat <button>Mark Done</button></li>
+        <li>🧠 Take the “Protect the Elephants” Quiz <a href="elephant-quiz.html">Start Quiz</a></li>
+        <li>
+          📸 Upload your elephant photo:
+          <input type="file" id="photo-upload" accept="image/*">
+          <button onclick="handlePhotoUpload()">Upload</button>
+        </li>
+      </ul>
+
+      <h3>✅ Your Progress</h3>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar" style="width: 0%;">0%</div>
+        <div id="badge" style="display: none; margin-top: 20px;">
+          <h3>🏅 You've earned a badge!</h3>
+          <img src="Elephant-guardianbadge.jpg" alt="Habitat Hero Badge" width="120">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="badges">
+    <h3>🏅 Your Badges</h3>
+    <div class="badge-grid">
+      <div class="badge">
+        <img id="badge-wildlife" src="images/Defender.jpg" alt="Wildlife Guardian">
+        <p>🛡 Wildlife Guardian</p>
+      </div>
+      <div class="badge">
+        <img id="badge-habitat" src="images/hhbadge.jpg" alt="Habitat Hero">
+        <p>🌿 Habitat Hero</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Set elephant as adopted animal
+    const animal = "Elephant";
+    const animalImg = "elephant.jpg"; // Replace with actual image path or URL
+
+    document.getElementById("animal-name").textContent = animal;
+    document.getElementById("animal-img").src = animalImg;
+
+    // Task tracking
+    let completedTasks = 0;
+    const totalTasks = 3;
+    const progressBar = document.getElementById("progress-bar");
+
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (!btn.classList.contains("done") && btn.textContent !== "Upload") {
+          btn.classList.add("done");
+          btn.textContent = "✅ Done!";
+          completedTasks++;
+          updateProgress();
+        }
+      });
+    });
+
+    function updateProgress() {
+      const percent = Math.round((completedTasks / totalTasks) * 100);
+      progressBar.style.width = percent + "%";
+      progressBar.textContent = percent + "%";
+
+      if (percent === 100) {
+        alert("🎉 You earned the 'Habitat Hero' badge!");
+        document.getElementById("badge").style.display = "block";
+        document.getElementById("badge-habitat").src = "https://your-real-badge-url-2.png";
+      }
+    }
+
+    function handlePhotoUpload() {
+      const fileInput = document.getElementById("photo-upload");
+      const previewDiv = document.getElementById("uploaded-photo");
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Please choose a photo.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const imageUrl = event.target.result;
+        previewDiv.innerHTML = `<img src="${imageUrl}" alt="Uploaded elephant photo" width="200">`;
+        localStorage.setItem("elephantPhoto", imageUrl);
+
+        alert("✅ Photo uploaded successfully! Thanks for supporting elephant conservation.");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Load badges from localStorage
+    if (localStorage.getItem("wildlifeGuardianBadge") === "earned") {
+      document.getElementById("badge-wildlife").src = "https://your-real-badge-url-1.png";
+    }
+  </script>
+  <div id="fact-popup" class="fact-popup">
+  <h3>🌿 Did You Know?</h3>
+  <p id="fact-text"></p>
+  <button onclick="closePopup()">Got it!</button>
+</div>
+
+<script>
+  const animalFacts = [
+    // 🐘 Elephant facts
+    "Elephants are the largest land animals on Earth. 🐘",
+    "An elephant’s trunk has over 40,000 muscles! 💪",
+    "Elephants are highly social and mourn their dead. 😢",
+
+    // 🦏 Rhino facts
+    "Rhino horns are made of keratin — the same material as our hair and nails. 🦏",
+    "Some rhino species can run up to 40 km/h. 🏃‍♂️💨",
+    "There are fewer than 30,000 rhinos left in the wild. ⚠️",
+
+    // 🐕 Wild dog facts
+    "African wild dogs live in packs of 6–20 and are highly cooperative. 🐕",
+    "Wild dogs have an 80% hunting success rate — higher than lions! 🎯",
+    "They are endangered due to habitat loss and human conflict. 🛑"
+  ];
+
+  function showFact() {
+    const randomFact = animalFacts[Math.floor(Math.random() * animalFacts.length)];
+    document.getElementById("fact-text").textContent = randomFact;
+    document.getElementById("fact-popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("fact-popup").style.display = "none";
+  }
+
+  window.addEventListener("DOMContentLoaded", showFact);
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navbarMenu");
+    menu.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>
